@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Forgive Me Sister ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{overflow:hidden;height:100vh;background:linear-gradient(-45deg,#ff8fc7,#b388ff,#ffd89b,#9c6dff);background-size:400% 400%;animation:bg 12s ease infinite;color:#fff}
+@keyframes bg{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.section{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;flex-direction:column;opacity:0;pointer-events:none;transition:1s;padding:20px}
+.active{opacity:1;pointer-events:auto}
+.card{background:rgba(255,255,255,.15);backdrop-filter:blur(15px);padding:30px;border-radius:25px;text-align:center;max-width:850px;width:95%}
+button{border:none;padding:15px 28px;border-radius:999px;cursor:pointer;font-weight:bold}
+.main{background:#ff4fa3;color:#fff}
+#typewriter{line-height:2;font-size:1.1rem;min-height:240px}
+iframe{width:100%;height:500px;border:none;border-radius:20px}
+.button-area{position:relative;height:250px}
+#yesBtn{position:absolute;left:20%;top:80px;background:#ff4fa3;color:#fff}
+#noBtn{position:absolute;right:20%;top:80px;background:#ff7043;color:#fff}
+.heart{position:fixed;bottom:-50px;animation:float 8s linear forwards}
+@keyframes float{to{transform:translateY(-110vh);opacity:0}}
+h1{margin-bottom:15px}
+</style>
+</head>
+<body>
+
+<section class="section active" id="stage1">
+<div class="card">
+<h1>Dear Sister ❤️</h1>
+<div id="typewriter"></div>
+<button class="main" id="continueBtn">Continue ❤️</button>
+</div>
+</section>
+
+<section class="section" id="stage2">
+<div class="card">
+<h2>A Message From Your Little Brother ❤️</h2><br>
+<iframe src="https://drive.google.com/file/d/1t8y9Te2jCg-uk6BlHhnAj12tOu8XMMz6/preview" allow="autoplay"></iframe>
+<br><br>
+<button class="main" id="videoDoneBtn">I Finished Watching ❤️</button>
+</div>
+</section>
+
+<section class="section" id="stage3">
+<div class="card">
+<h2>Will You Please Forgive Your Little Brother? 🥺❤️</h2>
+<div class="button-area">
+<button id="yesBtn">❤️ Yes, Forgiven</button>
+<button id="noBtn">😤 Not Forgiven</button>
+</div>
+</div>
+</section>
+
+<section class="section" id="stage4">
+<div class="card">
+<h1>Thank You Sister ❤️</h1>
+<p>Your forgiveness means everything to me.<br>Love You Always ❤️</p>
+</div>
+</section>
+
+<script>
+const msg=`I know I may have hurt you.\nYou have always supported me.\nI truly regret my mistake.\nPlease forgive your little brother ❤️`;
+let i=0;
+function type(){
+ if(i<msg.length){
+  document.getElementById('typewriter').innerHTML+=msg[i]=='\n'?'<br>':msg[i];
+  i++; setTimeout(type,35);
+ }
+}
+type();
+
+const s1=stage1,s2=stage2,s3=stage3,s4=stage4;
+
+continueBtn.onclick=()=>{s1.classList.remove('active');setTimeout(()=>s2.classList.add('active'),500)};
+videoDoneBtn.onclick=()=>{s2.classList.remove('active');setTimeout(()=>s3.classList.add('active'),500)};
+
+let count=0;
+noBtn.addEventListener('mouseover',move);
+noBtn.addEventListener('touchstart',e=>{e.preventDefault();move();});
+
+function move(){
+ count++;
+ const area=document.querySelector('.button-area');
+ noBtn.style.left=Math.random()*(area.clientWidth-120)+'px';
+ noBtn.style.top=Math.random()*(area.clientHeight-60)+'px';
+ noBtn.style.right='auto';
+ yesBtn.style.transform=`scale(${1+count*0.08})`;
+ if(count>10) noBtn.innerText='🥺 Please?';
+ if(count>20) noBtn.innerText='❤️ Click Yes';
+}
+
+yesBtn.onclick=()=>{
+ s3.classList.remove('active');
+ setTimeout(()=>s4.classList.add('active'),500);
+
+ for(let i=0;i<80;i++){
+  let h=document.createElement('div');
+  h.className='heart';
+  h.innerHTML=['❤️','💖','💕','💗'][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+'vw';
+  h.style.fontSize=(15+Math.random()*25)+'px';
+  h.style.animationDuration=(3+Math.random()*4)+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+ }
+
+ setTimeout(()=>{
+  window.open("https://wa.me/919059148631?text=I%20forgive%20you%20brother%20❤️","_blank");
+ },3000);
+};
+</script>
+</body>
+</html>
