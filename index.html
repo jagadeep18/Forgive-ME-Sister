@@ -106,8 +106,8 @@ yesBtn.onclick=()=>{
  }
 
 setTimeout(() => {
-  const message = "I forgive you brother <3";
-
+  const message = "I forgive you brother " + String.fromCodePoint(0x2764);
+  
   window.open(
     `https://wa.me/919059148631?text=${encodeURIComponent(message)}`,
     "_blank"
